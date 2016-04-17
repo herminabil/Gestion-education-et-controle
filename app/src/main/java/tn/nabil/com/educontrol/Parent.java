@@ -129,6 +129,84 @@ public class Parent extends AppCompatActivity {
         });
 
 
+        bAbsence.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                System.out.println("ww");
+
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                        showUrl, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        System.out.println(response.toString());
+                        try {
+                            JSONArray students = response.getJSONArray("students");
+                            //result.append("firstname    lastname    classe "+ " \n");
+
+                            for (int i = 0; i < students.length(); i++) {
+                                JSONObject student = students.getJSONObject(i);
+                                if (student.getString("parent").equals(messagerecu))  {
+                                    if (student.getString("absence").equals("oui")) {
+                                        tl1.setVisibility(bEmploi.getVisibility());
+                                        //Toast.makeText(getApplicationContext(), "L'eleve est " + student.getString("motif"), Toast.LENGTH_LONG).show();
+
+                                        TextView textView6 = (TextView)findViewById(R.id.textView6);
+                                        textView6.setText("absence : ");
+
+                                        TextView textView7 = (TextView)findViewById(R.id.textView7);
+                                        textView7.setText("- Motif :");
+
+                                        String firstname = student.getString("nom");
+                                        String date1 = student.getString("date absence");
+                                        String motif = student.getString("motif");
+
+                                        tvnom.setText("");
+                                        tvdate.setText("");
+                                        tvclasse.setText("");
+
+                                        tvnom.append(firstname);
+                                        tvdate.append(date1);
+                                        tvclasse.append(motif);
+
+
+
+                                        //result.append(firstname + "||" + lastname + " ||" + classe + " \n");
+                                    }
+                                    else {
+                                        if (tl1.getVisibility()== bEmploi.getVisibility())
+                                            tl1.setVisibility(View.INVISIBLE);
+                                        Context context = getApplicationContext();
+                                        CharSequence text = "L'eleve " + student.getString("nom") + " n'a pas d'absence";
+                                        int duration = Toast.LENGTH_SHORT;
+                                        Toast toast = Toast.makeText(context, text, duration);
+                                        toast.setGravity(7, 2, 2);
+                                        TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+                                        toast.getView().setBackgroundColor(Color.BLUE);
+                                        v.setTextColor(Color.RED);
+                                        toast.show();
+
+                                           // Toast.makeText(getApplicationContext(), "L'eleve " + student.getString("nom") + " n'a pas d'absence", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            }
+                            // result.append("============\n");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.append(error.getMessage());
+
+                    }
+                });
+                requestQueue.add(jsonObjectRequest);
+            }
+        });
 
 
     }
