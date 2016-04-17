@@ -1,18 +1,29 @@
 package tn.nabil.com.educontrol;
 
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.viewpagerindicator.PageIndicator;
+import com.viewpagerindicator.TitlePageIndicator;
 
-public class EmploiActivity extends AppCompatActivity {
-    ViewPager viewPager;
-    CustomSwipeAdpter adapter;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+
+public class EmploiActivity extends FragmentActivity {
+    TestFragmentAdapter mAdapter;
+    ViewPager mPager;
+    PageIndicator mIndicator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emploi);
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
-        adapter = new CustomSwipeAdpter(this);
-        viewPager.setAdapter(adapter);
+        mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
+
+        mPager = (ViewPager)findViewById(R.id.pager);
+        mPager.setAdapter(mAdapter);
+
+        mIndicator = (TitlePageIndicator)findViewById(R.id.indicator);
+        mIndicator.setViewPager(mPager);
     }
 }

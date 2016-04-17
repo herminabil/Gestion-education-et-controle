@@ -3,4 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_parent">Parent</string>
     <string name="title_activity_demarrage">DemarrageActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
