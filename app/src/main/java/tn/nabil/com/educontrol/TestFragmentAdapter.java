@@ -11,7 +11,7 @@ import com.viewpagerindicator.IconPagerAdapter;
  */
 public class TestFragmentAdapter extends FragmentPagerAdapter implements IconPagerAdapter{
     protected static final String[] CONTENT = new String[] {
-            "This", "Is", "A", "Test"
+            "Lundi", "Mardi", "Mercredi", "Jeudi","Vendredi", "Samedi"
     };
 
     private int mCount = CONTENT.length;
@@ -42,6 +42,12 @@ public class TestFragmentAdapter extends FragmentPagerAdapter implements IconPag
             case 3:
                 fragment = new Fragment4();
                 break;
+            case 4:
+                fragment = new Fragment5();
+                break;
+            case 5:
+                fragment = new Fragment6();
+                break;
         }
         return fragment;
     }
@@ -56,16 +62,22 @@ public class TestFragmentAdapter extends FragmentPagerAdapter implements IconPag
         String title = "";
         switch(position){
             case 0:
-                title = "Fragment 1";
+                title = "Lundi";
                 break;
             case 1:
-                title = "Fragment 2";
+                title = "Mardi";
                 break;
             case 2:
-                title = "Fragment 3";
+                title = "Mercredi";
                 break;
             case 3:
-                title = "Fragment 4";
+                title = "Jeudi";
+                break;
+            case 4:
+                title = "Vendredi";
+                break;
+            case 5:
+                title = "Samedi";
                 break;
         }
 

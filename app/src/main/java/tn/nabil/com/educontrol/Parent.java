@@ -1,11 +1,14 @@
 package tn.nabil.com.educontrol;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -38,12 +41,13 @@ public class Parent extends AppCompatActivity {
         final String messagerecu = getIntent().getExtras().getString("message");
         tvWelcome.setText("BienVenue "+messagerecu);
         final TextView tvnom =(TextView) findViewById(R.id.tvnom);
+        //final TextView tvabsence =(TextView)findViewById(R.id.tvabsence);
         final TextView tvprenom =(TextView) findViewById(R.id.tvprenom);
         final TextView tvdate =(TextView) findViewById(R.id.tvdate);
         final TextView tvclasse =(TextView) findViewById(R.id.tvclasse);
         final TableLayout tl1 = (TableLayout) findViewById(R.id.tl1);
 
-        Button bEmploi = (Button) findViewById(R.id.bEmploi);
+        final Button bEmploi = (Button) findViewById(R.id.bEmploi);
         Button show = (Button) findViewById(R.id.show);
         final Button bAbsence = (Button) findViewById(R.id.bAbsence);
        // final TextView result = (TextView) findViewById(R.id.tvresult);
@@ -51,12 +55,14 @@ public class Parent extends AppCompatActivity {
         bEmploi.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                //Intent intent = new Intent(LoginActivity.this, Parent.class);
-                //intent.putExtra("message",jsonObject.getString("success"));
-                //LoginActivity.this.startActivity(intent);
-                Intent intent = new Intent(Parent.this, EmploiActivity.class);
-                Parent.this.startActivity(intent);
 
+                Intent intent = new Intent(Parent.this, EmploiActivity.class);
+               // intent.putExtra("message1",messagerecu);
+                Parent.this.startActivity(intent);
+/*              Intent intent = new Intent(LoginActivity.this, Parent.class);
+                intent.putExtra("message",jsonObject.getString("success"));
+                LoginActivity.this.startActivity(intent);
+                */
             }
         });
 
@@ -67,7 +73,7 @@ public class Parent extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //System.out.println("ww");
-                tl1.setVisibility(bAbsence.getVisibility());
+                tl1.setVisibility(bEmploi.getVisibility());
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                         showUrl, new Response.Listener<JSONObject>() {
                     @Override
@@ -84,6 +90,17 @@ public class Parent extends AppCompatActivity {
                                     String lastname = student.getString("prenom");
                                     String date = student.getString("date naissance");
                                     String classe = student.getString("classe");
+
+                                     TextView textView6 = (TextView)findViewById(R.id.textView6);
+                                     textView6.setText("naissance : ");
+
+                                     TextView textView7 = (TextView)findViewById(R.id.textView7);
+                                     textView7.setText("- Classe :");
+
+                                     tvnom.setText("");
+                                     tvprenom.setText("");
+                                     tvdate.setText("");
+                                     tvclasse.setText("");
 
                                      tvnom.append(firstname);
                                      tvprenom.append(lastname);
@@ -110,6 +127,9 @@ public class Parent extends AppCompatActivity {
                 requestQueue.add(jsonObjectRequest);
             }
         });
+
+
+
 
     }
 

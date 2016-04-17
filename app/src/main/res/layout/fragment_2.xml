@@ -5,9 +5,25 @@
     tools:context="layout.fragment_2">
 
     <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText102"
+        android:text="Emploi du temps"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ligne1"/>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/b"/>
+        android:src="@drawable/mardi"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ligne1"
+        android:layout_gravity="center_horizontal|bottom" />
 
 </FrameLayout>
