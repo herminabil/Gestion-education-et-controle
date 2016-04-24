@@ -29,6 +29,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".EmploiActivity" />
+        <activity
+            android:name=".splash"
+            android:label="@string/title_activity_splash"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

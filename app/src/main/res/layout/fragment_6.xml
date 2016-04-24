@@ -15,10 +15,13 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ligne1"/>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/emploi"/>
+    <GridView
+        android:layout_width="wrap_content"
+        android:layout_height="453dp"
+        android:id="@+id/gridView"
+        android:layout_gravity="left|center_vertical"
+        android:numColumns="2"
+        android:choiceMode="none" />
 
     <ImageView
         android:layout_width="match_parent"

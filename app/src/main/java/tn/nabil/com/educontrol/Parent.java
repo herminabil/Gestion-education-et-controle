@@ -149,7 +149,7 @@ public class Parent extends AppCompatActivity {
                                 if (student.getString("parent").equals(messagerecu))  {
                                     if (student.getString("absence").equals("oui")) {
                                         tl1.setVisibility(bEmploi.getVisibility());
-                                        //Toast.makeText(getApplicationContext(), "L'eleve est " + student.getString("motif"), Toast.LENGTH_LONG).show();
+                                        //Toast.makeText(l(), "L'eleve est " + student.getString("motif"), Toast.LENGTH_LONG).show();
 
                                         TextView textView6 = (TextView)findViewById(R.id.textView6);
                                         textView6.setText("absence : ");
